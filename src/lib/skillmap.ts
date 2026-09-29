@@ -210,16 +210,18 @@ export function buildRoadmap(
     weekCursor += weeks;
 
     const styleRes = RESOURCES[style];
-    const resources = [
-      styleRes[(idx + seed) % styleRes.length],
-      styleRes[(idx + seed + 1) % styleRes.length],
+    const resources: string[] = [
+      styleRes[(idx + seed) % styleRes.length] ?? "Self-paced study on each skill",
+      styleRes[(idx + seed + 1) % styleRes.length] ?? "Weekly practice session",
       idx === 2 ? "Mock interviews and portfolio feedback" : "A weekly self-check on progress",
     ];
 
+    const phaseMeta = meta[idx] ?? meta[0]!;
+
     return {
       id: `phase-${idx}`,
-      name: meta[idx].name,
-      goal: meta[idx].goal,
+      name: phaseMeta.name,
+      goal: phaseMeta.goal,
       skills: list,
       weeks,
       milestones,
