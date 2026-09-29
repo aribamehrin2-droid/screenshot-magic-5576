@@ -108,15 +108,18 @@ export function AnalysisStep({
                   name="Required"
                   dataKey="Required"
                   stroke="var(--primary-glow)"
+                  strokeWidth={2}
+                  strokeDasharray="4 3"
                   fill="var(--primary-glow)"
-                  fillOpacity={0.18}
+                  fillOpacity={0.12}
                 />
                 <Radar
                   name="Current"
                   dataKey="Current"
                   stroke="var(--primary)"
+                  strokeWidth={2}
                   fill="var(--primary)"
-                  fillOpacity={0.35}
+                  fillOpacity={0.4}
                 />
                 <Tooltip
                   contentStyle={{
