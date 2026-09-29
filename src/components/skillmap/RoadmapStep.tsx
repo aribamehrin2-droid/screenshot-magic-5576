@@ -57,7 +57,7 @@ export function RoadmapStep({
             min={2}
             max={40}
             step={1}
-            onValueChange={([v]) => onHours(v)}
+            onValueChange={(v) => onHours(v[0] ?? hours)}
             aria-label="Study hours per week"
           />
         </div>

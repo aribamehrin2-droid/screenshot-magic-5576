@@ -110,7 +110,7 @@ export function SkillsStep({
                 min={1}
                 max={5}
                 step={1}
-                onValueChange={([v]) => setLevel(skill.id, v)}
+                onValueChange={(v) => setLevel(skill.id, v[0] ?? skill.current)}
                 aria-label={`Your level in ${skill.name}`}
               />
               <div className="text-muted-foreground flex justify-between text-[10px]">
@@ -180,7 +180,7 @@ export function SkillsStep({
               min={1}
               max={5}
               step={1}
-              onValueChange={([v]) => setDraft({ ...draft, target: v })}
+              onValueChange={(v) => setDraft({ ...draft, target: v[0] ?? draft.target })}
               aria-label="Target level for new skill"
             />
           </div>
