@@ -161,16 +161,12 @@ export function buildRoadmap(
     ? ranked
     : [...analysis.entries].sort((a, b) => b.target - a.target).slice(0, 3);
 
-  const buckets: GapEntry[][] = [[], [], []];
-  pool.forEach((skill, i) => buckets[i % 3 === 0 ? 0 : i % 3 === 1 ? 1 : 2].push(skill));
-  // keep highest priority items in phase 1
-  const sortedPool = [...pool];
-  buckets[0] = sortedPool.slice(0, Math.ceil(sortedPool.length / 3));
-  buckets[1] = sortedPool.slice(
-    Math.ceil(sortedPool.length / 3),
-    Math.ceil((sortedPool.length * 2) / 3),
-  );
-  buckets[2] = sortedPool.slice(Math.ceil((sortedPool.length * 2) / 3));
+  const third = Math.ceil(pool.length / 3);
+  const buckets: GapEntry[][] = [
+    pool.slice(0, third),
+    pool.slice(third, third * 2),
+    pool.slice(third * 2),
+  ];
 
   const meta = [
     { name: "Foundation", goal: "Close the biggest gaps and build reliable basics." },
