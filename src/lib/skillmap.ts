@@ -137,12 +137,13 @@ const PROJECTS: Record<string, string[]> = {
 
 function projectIdea(skills: GapEntry[], index: number): string {
   const cat: SkillCategory = skills[0]?.category ?? "Technical";
-  const pool = PROJECTS[cat] ?? PROJECTS.Technical;
+  const pool = PROJECTS[cat] ?? PROJECTS["Technical"] ?? [];
   const names = skills
     .slice(0, 2)
     .map((s) => s.name)
     .join(" + ");
-  return `${pool[index % pool.length]} (${names || "your target skills"}).`;
+  const idea = pool[index % Math.max(1, pool.length)] ?? "Build a small project that uses these skills";
+  return `${idea} (${names || "your target skills"}).`;
 }
 
 export function buildRoadmap(
